@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-// отримуємо доступ до div.gallery
+// отримуємо доступ до порожнього списку
 const listOfImages = document.querySelector('.gallery');
 
 // створюємо функцію для розмітки галереї
