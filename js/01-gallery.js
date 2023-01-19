@@ -26,6 +26,7 @@ const makeGallery = galleryItems.map(makeGalleryMarkup).join('');
 listOfImages.insertAdjacentHTML('afterbegin', makeGallery);
 
 listOfImages.addEventListener('click', onGalleryClick);
+listOfImages.addEventListener('keydown', onEscPress);
 
 // реалізуємо делегування події на div.gallery та створення модалки з великим
 // зображенням всередині
@@ -40,5 +41,18 @@ function onGalleryClick(e) {
 `
   );
   instance.show();
+
+  // слухач події для закриття модального вікна клавішею Escape
+  listOfImages.addEventListener('keydown', onEscKeyPress);
+
+  function onEscKeyPress(e) {
+    const ESC_KEY_CODE = 'Escape';
+    const isEscKey = e.code === ESC_KEY_CODE;
+
+    if (isEscKey) {
+      instance.close();
+    }
+  }
 }
+
 console.log(galleryItems);
