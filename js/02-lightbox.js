@@ -1,10 +1,10 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// отримуємо доступ до порожнього списку
-const listOfImages = document.querySelector('.gallery');
+// Пошук  порожнього списку для майбутньої галереї
+const gallery = document.querySelector('.gallery');
 
-// створюємо функцію для розмітки галереї
+// Створення функції для розмітки галереї
 
 const makeGalleryMarkup = image => {
   const { preview, original, description } = image;
@@ -16,16 +16,19 @@ const makeGalleryMarkup = image => {
 
 const makeGallery = galleryItems.map(makeGalleryMarkup).join('');
 
-//  додаємо розмітку в список
-listOfImages.insertAdjacentHTML('afterbegin', makeGallery);
+//  Додавання розмітки у список
+gallery.insertAdjacentHTML('afterbegin', makeGallery);
 
-listOfImages.addEventListener('click', onGalleryClick);
+// додавання слухача події по кліку на галерею
+gallery.addEventListener('click', onGalleryClick);
 
+// Створення колбек-функції для слухача події
 function onGalleryClick(e) {
   e.preventDefault();
   if (e.target.nodeName !== 'IMG') {
     return;
   }
 }
+// Створення самого лайтбоксу та додавання відображення напису з alt
 new SimpleLightbox('.gallery a', { captionsData: 'alt', fadeSpeed: 250 });
 console.log(galleryItems);
