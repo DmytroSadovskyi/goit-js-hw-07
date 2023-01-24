@@ -30,5 +30,5 @@ function onGalleryClick(e) {
   }
 }
 // Створення самого лайтбоксу та додавання відображення напису з alt
-new SimpleLightbox('.gallery a', { captionsData: 'alt', fadeSpeed: 250 });
+new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 console.log(galleryItems);
