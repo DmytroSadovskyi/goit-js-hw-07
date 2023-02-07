@@ -38,12 +38,22 @@ function onGalleryClick(e) {
   const instance = basicLightbox.create(
     `
     <img src="${e.target.dataset.source}">
-`
+`,
+    {
+      // додавання слухача події для кнопки Escape під час показу модального вікна
+      onShow: () => {
+        gallery.addEventListener('keydown', onEscKeyPress);
+      },
+
+      //  видалення слухача події при закритті
+      onClose: () => {
+        gallery.removeEventListener('keydown', onEscKeyPress);
+      },
+    }
   );
   instance.show();
 
-  // слухач події для закриття модального вікна клавішею Escape
-  gallery.addEventListener('keydown', onEscKeyPress);
+  // колбек для слухача події  закриття модального вікна клавішею Escape
 
   function onEscKeyPress(e) {
     if (e.code === 'Escape') {
@@ -51,5 +61,4 @@ function onGalleryClick(e) {
     }
   }
 }
-
 console.log(galleryItems);
